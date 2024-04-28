@@ -40,7 +40,7 @@ export const Banner = () => {
             <Container>
                 <Row className="align-items-center">
                     <Col xs={12} md={12} xl={12}>
-                        <span className="tagline">Welcome to my portfolio</span>
+                        <span className="tagline">Welcome To My Website</span>
                         <h1>{`‎ `}<span className="txt-rotate"><span className="wrap">{text}</span></span></h1>
                         <p>About myself section</p>
                     </Col>
