@@ -24,7 +24,7 @@ export const Contact = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        let response = await fetch('http://localhost:5000/contact', {
+        let response = await fetch('http://localhost:3080/contact', {
             method: "POST",
             headers: {
                 'Content-Type' : 'Application/json;charset=utf-8'
@@ -32,7 +32,7 @@ export const Contact = () => {
             body: JSON.stringify(formDetails)
         });
         setButtonText('Send');
-        let result = response.json();
+        let result = await response.json();
         setFormDetails(formInitialDetails);
         if (result.code === 200) {
             setStatus({success:true, message: 'Message Sent'});
@@ -59,18 +59,20 @@ export const Contact = () => {
                                     <input type="email" value={formDetails['email']} placeholder="Email" onChange={(e) => updateForm('email',e.target.value)}/>
                                 </Col>
                                 <Col sm={6} className="px-1">
-                                    <input type="tel" value={formDetails['phone']} placeholder="Phone Number" onChange={(e) => updateForm('phone',e.target.value)}/>
+                                    <input type="tel" value={formDetails['phone']} placeholder="Phone Number (Optional)" onChange={(e) => updateForm('phone',e.target.value)}/>
                                 </Col>
-                                <Col>
+                                <Col sm={12}>
                                     <textarea row={6} value={formDetails['message']} placeholder="Type your message here" onChange={(e) => updateForm('message',e.target.value)}/>
-                                    <button type="submit"><span>{buttonText}</span></button>
                                 </Col>
                                 {
                                     status.message &&
-                                    <Col>
+                                    <Col sm={12}>
                                         <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
                                     </Col>
                                 }
+                                <Col sm={12}>
+                                <button type="submit"><span>{buttonText}</span></button>
+                                </Col>
                             </Row>
                         </form>
                     </Col>
