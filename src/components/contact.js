@@ -45,8 +45,8 @@ export const Contact = () => {
         <section className="contact" id="connect">
             <Container>
                 <Row className="align-items-center">
-                    <Col md={6}>
-                        <h2>Get In Touch</h2>
+                    <Col>
+                        <h2>Send Me A Message</h2>
                         <form onSubmit={handleSubmit}>
                             <Row>
                                 <Col sm={6} className="px-1">
@@ -61,17 +61,17 @@ export const Contact = () => {
                                 <Col sm={6} className="px-1">
                                     <input type="tel" value={formDetails['phone']} placeholder="Phone Number (Optional)" onChange={(e) => updateForm('phone',e.target.value)}/>
                                 </Col>
-                                <Col sm={12}>
+                                <Col sm={12} className="px-1">
                                     <textarea row={6} value={formDetails['message']} placeholder="Type your message here" onChange={(e) => updateForm('message',e.target.value)}/>
                                 </Col>
                                 {
                                     status.message &&
-                                    <Col sm={12}>
+                                    <Col sm={12} className="px-2">
                                         <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
                                     </Col>
                                 }
                                 <Col sm={12}>
-                                <button type="submit"><span>{buttonText}</span></button>
+                                <button className="btn btn-primary" type="submit"><span>{buttonText}</span></button>
                                 </Col>
                             </Row>
                         </form>

@@ -45,7 +45,9 @@ export const NavBar = () => {
                         <a href="https://github.com/JasimrazaMomin"><img src={github} alt ="github"/></a>
                         <a href="https://www.instagram.com/jasimraza_momin/"><img src={insta} alt ="instagram"/></a>
                     </div>
+                    <a href="#connect">
                     <button className="contact-me" onClick={() => console.log('works')}><span>Let's Chat</span></button>
+                    </a>
                 </span>
                 </Navbar.Collapse>
             </Container>
