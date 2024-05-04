@@ -6,6 +6,7 @@ import { Skills } from './components/skills';
 import { Projects } from './components/projects';
 import {ParticlesComponent} from './components/particle';
 import { Contact } from './components/contact';
+import { Footer } from './components/footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Skills/>
       <Projects/>
       <Contact/>
+      <Footer/>
     </div>
   );
 }
