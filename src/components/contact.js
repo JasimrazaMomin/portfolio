@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 export const Contact = () => {
     const formInitialDetails = {
@@ -20,6 +22,10 @@ export const Contact = () => {
         }
         )
     }
+
+    useEffect(()=> {
+        Aos.init({duration: 700});
+    },[])
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -43,9 +49,10 @@ export const Contact = () => {
 
     return (
         <section className="contact" id="connect">
-            <Container>
+            <Container >
                 <Row className="align-items-center">
                     <Col>
+                    <div data-aos="flip-up">
                         <h2>Send Me A Message</h2>
                         <form onSubmit={handleSubmit}>
                             <Row>
@@ -75,6 +82,7 @@ export const Contact = () => {
                                 </Col>
                             </Row>
                         </form>
+                    </div>
                     </Col>
                 </Row>
             </Container>

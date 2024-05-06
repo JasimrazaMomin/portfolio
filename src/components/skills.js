@@ -1,6 +1,10 @@
 import { Col, Container, Row } from 'react-bootstrap';
+import { useEffect } from 'react';
+import Aos from 'aos';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
+import "aos/dist/aos.css";
+
 //   https://devicon.dev to get icons that i used
 export const Skills = () => {
     const responsive = {
@@ -22,16 +26,26 @@ export const Skills = () => {
         }
     };
 
+    useEffect(()=> {
+        Aos.init({offset: 100, duration: 1000});
+    },[])
+
     return (
         <section className="skill" id="skills">
             <Container>
                 <Row>
                     <Col>
-                        <div className="skill-bx">
+                        <div data-aos="slide-up" className="skill-bx">
                             <h2>
                                 Skills
                             </h2>
-                            <p>Description</p>
+                            <p>I have a strong foundation in programming languages such as Python, Java, and C, with a focus on building efficient and scalable software solutions. My experience extends to relational algebra, relational databases, and database design, where I leverage my knowledge to create robust and optimized database structures.
+
+I am well-versed in design principles and software development cycles, ensuring that my projects are not only functional but also adhere to industry best practices. My expertise in data structures and algorithms allows me to approach problem-solving with a strategic mindset, delivering high-quality and efficient solutions.
+
+Additionally, my understanding of artificial neural networks (ANN) enables me to explore complex machine learning models, further enhancing my skills in data analysis and pattern recognition. I am also proficient in debugging and optimization, ensuring that my code is efficient and error-free.
+
+With a background in discrete mathematics and a passion for learning, I am always eager to explore new technologies and expand my skill set. I am confident in my ability to contribute effectively to any software development team, bringing a blend of technical expertise, analytical thinking, and a commitment to excellence. My proficiency shines in the following skills:</p>
                             <Carousel responsive={responsive} infinite={true} className="skill-slider">
                                 <div className='item'>
                                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" height={75} width={75} alt="python" />

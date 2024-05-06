@@ -7,15 +7,17 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 body {
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: auto !important;
   position: relative;
   background-color: #121212 !important;
   color: #fff !important;
-  font-family: Helvetica, sans-serif !important;
+  font-family: ""Montserrat"", sans-serif !important;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -35,8 +37,19 @@ h1,h2,h3,h4,h5,h6 {
 
 /*########################################################################################################################################*/
 
+.container {
+  overflow-y: hidden !important;
+  overflow-x:hidden !important;
+}
+
+.container-fluid {
+  overflow-x:hidden !important;
+}
+
 nav.navbar {
   padding: 18px 0;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 10px;
   position: fixed;
   width: 100%;
@@ -204,10 +217,62 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
+@media (max-width: 768px) {
+
+  nav.navbar .container {
+    background-color: #121212;
+    padding: 10px;
+  }
+
+  nav.navbar {
+    align-items: center;
+    scale: 0.8;
+  }
+
+  nav.navbar.scrolled {
+    top: 2%;
+    opacity: 0.95;
+  }
+
+
+  nav.navbar a.navbar-brand {
+    font-size: 18px;
+  }
+
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  nav.navbar .navbar-nav {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .socials,
+  .navbar-socials {
+    margin-top: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .socials a {  
+    font-size: 12px;
+  }
+
+  .navbar-socials button {
+    font-size: 14px;
+  }
+}
+
+
 /*########################################################################################################################################*/
 
 .banner {
   margin-top: 0;
+  position: relative;
   padding: 260px 0 100px 0;
   /* background-color: rgb(3, 0, 19); */
   background-position: top center;
@@ -224,51 +289,51 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .banner h1 {
   font-size: 65px;
+  padding-bottom: 20px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
   margin-bottom: 20px;
   display: block;
 }
+
+@media only screen and (max-width: 768px) {
+  .banner h1{
+    font-size: 60px;
+    padding-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+    height: 30vh; 
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+}
+
 .banner p {
+  padding: 40px;
+  background: #151515db;
+  border-radius: 64px;
   color: #B8B8B8;
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
-  width: 96%;
+  width: 100%;
+  border: 2px solid transparent;
+  transition: 1s;
 }
-.banner button {
-  color: #fff;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top: 60px;
-  letter-spacing: 0.8px;
-  display: flex;
-  align-items: center;
+
+.banner p:hover {
+  background: #151515;
+  animation: rainbow 2.5s infinite;
 }
-.banner button svg {
-  font-size: 25px;
-  margin-left: 10px;
-  transition: 0.3s ease-in-out;
-  line-height: 1;
+
+.banner p:active {
+  filter: invert();
 }
-.banner button:hover svg {
-  margin-left: 25px;
-}
-.banner img {
-  animation: updown 3s linear infinite;
-}
-@keyframes updown {
-    0% {
-        transform: translateY(-20px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
-}
+
 
 @keyframes blink {
   0% { border-color: transparent; }
@@ -283,18 +348,160 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /*########################################################################################################################################*/
+@media only screen and (max-width: 768px) {
+  .star_span {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+.star_span{
+  position: absolute;
+  overflow: hidden !important;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(249, 1, 1, 0.1), 0 0 20px rgb(248, 163, 163)  ;
+  animation:  animate 3s linear infinite;
+}
+.star_span::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, #a9e4f6, transparent);
+}
+@keyframes animate {
+  0%
+  {
+      transform: rotate(315deg) translateX(0);
+      opacity: 1;
+  }
+  70%
+  {
+      opacity: 1;
+
+  }
+  100%
+  {
+      transform: rotate(315deg) translateX(-1500px);
+      opacity: 0;
+
+  }
+  
+}
+.star_span:nth-child(1){
+  top: 0;
+  right: 0;
+  left:initial;
+  animation-delay:0 ;
+  animation-duration: 1s;
+}
+
+.star_span:nth-child(2){
+  top: 0;
+  right: 80px;
+  left:initial;
+  animation-delay:0.2s;
+  animation-duration: 3s;
+}
+
+.star_span:nth-child(3){
+  top: 80px;
+  right: 0px;
+  left:initial;
+  animation-delay:0.4s ;
+  animation-duration: 2s;
+}
+
+.star_span:nth-child(4){
+  top: 0;
+  right: 180px;
+  left:initial;
+  animation-delay:0.6s;
+  animation-duration: 1.5s;
+}
+
+.star_span:nth-child(5){
+  top: 0;
+  right: 400px;
+  left:initial;
+  animation-delay:0.8s;
+  animation-duration: 2.5s;
+}
+
+.star_span:nth-child(6){
+  top: 0;
+  right: 600px;
+  left:initial;
+  animation-delay:1s ;
+  animation-duration: 3s;
+}
+.star_span:nth-child(7 ){
+  top: 300px;
+  right: 0px;
+  left:initial;
+  animation-delay:1s ;
+  animation-duration: 1.75s;
+}
+
+.star_span:nth-child(8){
+  top: 0px;
+  right: 700px;
+  left:initial;
+  animation-delay:1.4s ;
+  animation-duration: 1.25s;
+}
+
+.star_span:nth-child(9){
+  top: 0px;
+  right: 1000px;
+  left:initial;
+  animation-delay:0.75s ;
+  animation-duration: 2.25s;
+}
+
+.star_span:nth-child(10){
+  top: 0px;
+  right: 1000px;
+  left:initial;
+  animation-delay:2.75s ;
+  animation-duration: 2.25s;
+}
+
+}
+/*########################################################################################################################################*/
 
 .skill {
+  margin-top: 100px;
   padding: 0 0 50px 0;
   position: relative;
+  
 }
 .skill-bx {
-  background: #151515;
+  background: #151515db;
   border-radius: 64px;
   text-align: center;
   padding: 60px 50px;
-  margin-top: -60px;
+  /* margin-top: -60px; */
+  border: 2px solid transparent;
+  transition: 1s ease;
 }
+
+.skill-bx:hover {
+  background: #151515;
+  animation: rainbow 2.5s infinite;
+}
+
+/* .skill-bx:active {
+  
+} */
+
 .skill h2 {
 	font-size: 45px;
 	font-weight: 700;
@@ -305,6 +512,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     letter-spacing: 0.8px;
     line-height: 1.5em;
     margin: 14px 0 75px 0;
+    transition: 1s ease;
+}
+.skill p:active {
+  color: rgb(0, 255, 255) !important;
 }
 .skill-slider {
   width: 80%;
@@ -317,6 +528,358 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /*########################################################################################################################################*/
+
+.timeline {
+  color: black;
+  padding: 100px 0;
+}
+
+.timeline h1 {
+	font-size: 45px;
+  color: white;  
+  background: linear-gradient(#151515db 30%,#1a1a1adb);
+  border-radius: 64px;
+  text-align: center;
+  font-weight: 700;
+  padding: 60px 50px;
+  margin-top: 60px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border: 2px solid transparent;
+  transition: 1s;
+}
+
+.timeline h1:hover {
+  background: linear-gradient(#151515 30%,#1a1a1a);
+  animation: rainbow 2.5s infinite;
+}
+
+.timeline h1:active {
+  animation: zoom 0.5s ease;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+    color: black;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #47fff3; /* Or any other color */
+  }
+  100% {
+    transform: scale(1);
+    color: black;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .timeline h1 {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+.timeline h3 {
+  padding-top: 0.25em;
+}
+
+
+.vertical-timeline-element-content {
+  box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25), 0 0.4em 1.25em 0 rgba(0, 0, 0, 0.15) !important;
+  padding: 2em 3em !important;
+  text-align: left;
+  color: rgb(213, 213, 213);
+  background-color: #1a1a1a !important;
+  transition: 0.3s;
+}
+
+
+.vertical-timeline-element-icon {
+  box-shadow: 0 0 0 10px #27272787, inset 0 1px 0 rgba(0, 0, 0, 0.08), 0 2px 0 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.vertical-timeline-element-date {
+  color: rgb(239, 239, 239) !important;
+}
+
+#description {
+  margin: 1.5em 0 2em 0;
+}
+
+.vertical-timeline-element-content-arrow {
+  border-right: 0.95em solid #1c1c1c !important;
+}
+
+.custom-line:before {
+  background: #1c1c1c !important;
+}
+
+@keyframes rainbow {
+  0%,100% {border-color: rgb(0, 1, 48);}
+
+  5%,95% { border-color: rgb(0, 26, 67); } 
+  10%,90% { border-color: rgb(0, 51, 88); } 
+  15%,85% { border-color: rgb(0, 77, 109); } 
+
+  20%,80% { border-color: rgb(0, 102, 130); } 
+  25%,75% { border-color: rgb(0, 128, 151); } 
+  30%,70% { border-color: rgb(0, 153, 171); } 
+
+  35%,65% { border-color: rgb(0, 179, 192); } 
+  40%,60% { border-color: rgb(0, 204, 213); } 
+  45%,55% { border-color: rgb(0, 230, 234); } 
+
+  50% {border-color: rgb(0, 255, 255);}
+
+}
+
+.button {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  color: rgb(35, 35, 35);
+}
+
+.workButton {
+  background-color: #06d6a0;
+}
+
+.workButton:hover {
+  background-color: #0ac593;
+}
+
+.clubButton {
+  background-color: pink;
+}
+
+.clubButton:hover {
+  background-color: rgb(232, 174, 184);
+}
+
+.clubButton:active {
+  filter: invert();
+}
+
+.workButton:active {
+  filter: invert();
+}
+
+.schoolButton {
+  background-color: #f9c74f;
+}
+
+.schoolButton:hover {
+  background-color: #dcb047;
+}
+
+.schoolButton:active {
+  filter: invert();
+}
+
+@media only screen and (max-width: 1700px) {
+  .vertical-timeline-element-date {
+    display: block !important;
+    float: none !important;
+    color: rgb(44, 44, 44);
+    margin-top: 1.5em;
+  }
+}
+
+/*########################################################################################################################################*/
+
+.contact {
+  padding: 60px 0 200px 0;
+}
+
+.contact h2 {
+	font-size: 45px;
+	font-weight: 700;
+  margin-bottom: 30px;
+  margin-right: 20%;
+  margin-left: 20%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-radius: 64px;
+  background: linear-gradient(#1a1a1adb 30%,#151515db );
+  border: 2px solid transparent;
+  transition: 1s;
+}
+
+@media only screen and (max-width: 600px) {
+  .contact h2 {
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 20px;
+    background: linear-gradient(#1a1a1adb 30%,#151515db );
+    border: 2px solid transparent;
+    transition: 1s ease-in-out;
+  }
+}
+
+.contact h2:hover {
+  background: linear-gradient(#1a1a1a 30%,#151515 );
+  animation: rainbow 2.5s infinite;
+}
+
+.contact h2:active {
+  animation: weird 2s ease;
+}
+@keyframes weird {
+  0% {
+    transform: translateY(0) rotate(0) skew(0);
+  }
+  50% {
+    transform: translateY(100px) rotate(360deg) skew(20deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0) skew(0);
+  }
+}
+
+.contact form input, .contact form textarea {
+  box-sizing: border-box; 
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  margin: 0 0 8px 0;
+  padding: 18px 26px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  transition: 0.3s ease-in-out;
+}
+
+
+.contact form input:focus, .contact form textarea:focus {
+  background: rgba(255, 255, 255, 1);
+  color: #00012a;
+}
+.contact form input::placeholder, .contact form textarea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
+  color: #121212;
+  opacity: 0.8;
+}
+.contact form button {
+  font-weight: 700;
+  color: #00012a;
+  background-color: #0d6efd;
+  padding: 14px 48px;
+  font-size: 18px;
+  margin-top: 25px;
+  border-radius: 0;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+.contact form button span {
+  z-index: 1;
+  position: relative;
+}
+.contact form button:hover {
+  color: #fff;
+}
+.contact form button::before {
+  content: "";
+  background: #00012a;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+.contact form button:hover::before {
+  width: 100%;
+}
+
+.contact .danger {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.contact .success {
+  color: green;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/*########################################################################################################################################*/
+
+.footer {
+  padding: 5px 0 5px 0;
+  /* background-image: url('./assets/img/footer-bg.png'); */
+  background-color: black;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #B8B8B8;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+
+/*########################################################################################################################################*/
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*########################################################################################################################################*/
+
+/* no longer using this */
 
 .project {
   padding: 80px 0;
@@ -402,24 +965,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   animation: rainbow 2s infinite;
 }
 
-@keyframes rainbow {
-  0%,100% {border-color: rgb(0, 1, 48);}
 
-  5%,95% { border-color: rgb(0, 26, 67); } 
-  10%,90% { border-color: rgb(0, 51, 88); } 
-  15%,85% { border-color: rgb(0, 77, 109); } 
-
-  20%,80% { border-color: rgb(0, 102, 130); } 
-  25%,75% { border-color: rgb(0, 128, 151); } 
-  30%,70% { border-color: rgb(0, 153, 171); } 
-
-  35%,65% { border-color: rgb(0, 179, 192); } 
-  40%,60% { border-color: rgb(0, 204, 213); } 
-  45%,55% { border-color: rgb(0, 230, 234); } 
-
-  50% {border-color: rgb(0, 255, 255);}
-
-}
 
 .proj-imgbx:hover {
   scale:1;
@@ -461,137 +1007,4 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 1.5em;
   display: block;
   text-align: center; /* Center the text horizontally */
-}
-
-/*########################################################################################################################################*/
-
-.contact {
-  padding: 60px 0 200px 0;
-}
-
-.contact h2 {
-	font-size: 45px;
-	font-weight: 700;
-  margin-bottom: 30px;
-}
-.contact form input, .contact form textarea {
-  box-sizing: border-box; 
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  color: #fff;
-  margin: 0 0 8px 0;
-  padding: 18px 26px;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.8px;
-  transition: 0.3s ease-in-out;
-}
-
-
-.contact form input:focus, .contact form textarea:focus {
-  background: rgba(255, 255, 255, 1);
-  color: #00012a;
-}
-.contact form input::placeholder, .contact form textarea::placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-}
-.contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
-  color: #121212;
-  opacity: 0.8;
-}
-.contact form button {
-  font-weight: 700;
-  color: #00012a;
-  background-color: #fff;
-  padding: 14px 48px;
-  font-size: 18px;
-  margin-top: 25px;
-  border-radius: 0;
-  position: relative;
-  transition: 0.3s ease-in-out;
-}
-.contact form button span {
-  z-index: 1;
-  position: relative;
-}
-.contact form button:hover {
-  color: #fff;
-}
-.contact form button::before {
-  content: "";
-  background: #00012a;
-  width: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: 0.3s ease-in-out;
-}
-.contact form button:hover::before {
-  width: 100%;
-}
-
-/*########################################################################################################################################*/
-
-.footer {
-  padding: 20px 0 15px 0;
-  /* background-image: url('./assets/img/footer-bg.png'); */
-  background-color: black;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.footer p {
-  font-weight: 400;
-  font-size: 14px;
-  color: #B8B8B8;
-  letter-spacing: 0.5px;
-  margin-top: 20px;
-}
-
-/*########################################################################################################################################*/
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
