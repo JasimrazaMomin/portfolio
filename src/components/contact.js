@@ -43,7 +43,7 @@ export const Contact = () => {
         if (result.code === 200) {
             setStatus({success:true, message: 'Message Sent'});
         } else {
-            setStatus({success:false, message: 'Something went wrong'});
+            setStatus({success:false, message: 'Something went wrong, you can email me at jasimraza@hotmail.com or jrmomin04@gmail.com'});
         }
     }
 

@@ -7,6 +7,7 @@ import { useState,useEffect } from 'react';
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [timeClicked, setTimeClicked] = useState(0);
 
     useEffect(() => {
         const onScroll = () => {
@@ -26,10 +27,16 @@ export const NavBar = () => {
         setActiveLink(link);
     }
 
+    const timedButton = () => {
+        setTimeClicked(timeClicked+1)
+        // console.log("it works")
+        console.log(timeClicked)
+    }
+// onClick={timedButton()}
     return (
         <Navbar expand="lg" className={scrolled ? "scrolled" : "notscrolled"}>
             <Container>
-                <Navbar.Brand href="#home">Jaz</Navbar.Brand>
+                <Navbar.Brand href="#home" >Jaz</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
                     <span className="navbar-toggler-icon"></span>
                 </Navbar.Toggle>
