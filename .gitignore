@@ -25,3 +25,5 @@ yarn-error.log*
 # Ignore configuration files
 config.json
 
+# ignore env file
+.env
